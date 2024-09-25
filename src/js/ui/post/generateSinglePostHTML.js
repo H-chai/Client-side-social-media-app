@@ -15,7 +15,7 @@ export function generateSinglePostHTML(post) {
     thumbnail.src = post.media.url;
     thumbnail.alt = post.media.alt;
   } else {
-    thumbnail.src = "../../../../images/default-thumbnail.jpg";
+    thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
     thumbnail.alt = "No Media Available";
   }
   const postUserDate = document.createElement('div');
@@ -26,7 +26,7 @@ export function generateSinglePostHTML(post) {
   postUserIcon.classList.add("fa-regular", "fa-user");
   const userName = document.createElement("a");
   userName.textContent = post.author.name;
-  userName.href = `/profile/?name=${post.author.name}`;
+  userName.href = `/Client-side-social-media-app/profile/?name=${post.author.name}`;
   postUserContainer.append(postUserIcon, userName);
 
   const postDateContainer =  document.createElement("div");
@@ -79,7 +79,7 @@ export function generateSinglePostHTML(post) {
     userAvatar.src = comment.author.avatar.url;
     const commentUser = document.createElement("a");
     commentUser.classList.add("comment-username");
-    commentUser.href = `/profile/?name=${comment.author.name}`;
+    commentUser.href = `/Client-side-social-media-app/profile/?name=${comment.author.name}`;
     commentUser.textContent = comment.author.name;
     userInfo.append(userAvatar, commentUser);
     const commentContent = document.createElement("div");
@@ -119,7 +119,7 @@ export function generateSinglePostHTML(post) {
     userAvatar.src = comment.author.avatar.url;
     const commentUser = document.createElement("a");
     commentUser.classList.add("comment-username");
-    commentUser.href = `/profile/?name=${comment.author.name}`;
+    commentUser.href = `/Client-side-social-media-app/profile/?name=${comment.author.name}`;
     commentUser.textContent = comment.author.name;
     userInfo.append(userAvatar, commentUser);
     const commentContent = document.createElement("div");

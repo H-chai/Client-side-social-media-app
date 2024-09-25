@@ -4,7 +4,7 @@ export function generateFeedHTML(post) {
   const postContainer = document.createElement('a');
   postContainer.classList.add('post-container');
   postContainer.id = post.id;
-  postContainer.href = `/post/?id=${post.id}`;
+  postContainer.href = `/Client-side-social-media-app/post/?id=${post.id}`;
 
   const figure = document.createElement("figure");
   const thumbnail = document.createElement("img");
@@ -14,11 +14,11 @@ export function generateFeedHTML(post) {
     thumbnail.alt = post.media.alt;
 
     thumbnail.onerror = () => {
-      thumbnail.src = "../../../../images/default-thumbnail.jpg";
+      thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
       thumbnail.alt = "Default Thumbnail";
     };
   } else {
-    thumbnail.src = "../../../../images/default-thumbnail.jpg";
+    thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
     thumbnail.alt = "No Media Available";
   }
   figure.appendChild(thumbnail);
@@ -35,7 +35,7 @@ export function generateFeedHTML(post) {
   const userName = document.createElement("a");
   userName.classList.add("post-author");
   userName.textContent = post.author.name;
-  userName.href = `/profile/?name=${post.author.name}`;
+  userName.href = `/Client-side-social-media-app/profile/?name=${post.author.name}`;
   postUserContainer.append(postUserIcon, userName);
 
   const postDateContainer =  document.createElement("div");

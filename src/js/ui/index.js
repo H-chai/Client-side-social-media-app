@@ -13,7 +13,10 @@ export default class NoroffApp extends NoroffAPI {
   }
 
   async router(pathname = window.location.pathname) {
-    switch (pathname) {
+    const base = "/Client-side-social-media-app";
+    const cleanPath = pathname.replace(base, '');
+
+    switch (cleanPath) {
       case "/":
         await this.views.login();
         break;
@@ -79,6 +82,7 @@ export default class NoroffApp extends NoroffAPI {
   }
 
   views = {
+
     register: async () => {
       const form = document.forms["register"];
       form.addEventListener("submit", this.events.register);
@@ -160,7 +164,7 @@ export default class NoroffApp extends NoroffAPI {
         await api.auth.register(data);
         alert(`Registration successful!\nUsername: ${name}\nEmail: ${email}`);
         console.log(data);
-        window.location.href = "/auth/login/";
+        window.location.href = "/Client-side-social-media-apps/auth/login/";
       } catch(error) {
         alert(`${error.message}.\nPlease try again.`);
       }
@@ -182,7 +186,7 @@ export default class NoroffApp extends NoroffAPI {
 
     myPage: () => {
       const myPageLink = document.querySelector(".my-page");
-      myPageLink.href = `/profile/?name=${NoroffAPI.user}`;
+      myPageLink.href = `/Client-side-social-media-app/profile/?name=${NoroffAPI.user}`;
     },
 
     post: {
@@ -280,7 +284,7 @@ export default class NoroffApp extends NoroffAPI {
           const headerNav = document.querySelector(".header-nav");
           headerNav.insertBefore(editButton, headerNav.firstChild);
           editButton.addEventListener("click", () => {
-            window.location.href = `/post/edit/?id=${postId}`;
+            window.location.href = `/Client-side-social-media-app/post/edit/?id=${postId}`;
           })
 
           const singlePostFeed = document.querySelector('.single-post');
@@ -300,7 +304,7 @@ export default class NoroffApp extends NoroffAPI {
 
           const backButton = document.querySelector(".back-link-on-single-page");
           const previousPage = localStorage.getItem("page");
-          backButton.href = `/post/feed/?page=${previousPage}`;
+          backButton.href = `/Client-side-social-media-app/post/feed/?page=${previousPage}`;
 
           this.events.post.deleteComment();
           this.setupReplyButtons();
@@ -434,7 +438,7 @@ export default class NoroffApp extends NoroffAPI {
             followButton.style.display = "block"
           }
           updateButton.addEventListener("click", () => {
-            window.location.href = "/profile/update/"
+            window.location.href = "/Client-side-social-media-app/profile/update/"
           })
           const postFeed = document.querySelector('.feed');
           postFeed.innerHTML = '';
@@ -485,7 +489,7 @@ export default class NoroffApp extends NoroffAPI {
           });
 
           const backProfileButton = document.querySelector(".back-to-profile-page");
-          backProfileButton.href = `/profile/?name=${NoroffAPI.user}`;
+          backProfileButton.href = `/Client-side-social-media-app/profile/?name=${NoroffAPI.user}`;
           backProfileButton.textContent = "My profile page";
           const backIcon = document.createElement("i");
           backIcon.classList.add("fa-solid", "fa-chevron-left", "back-to-profile-icon");
@@ -651,7 +655,7 @@ export default class NoroffApp extends NoroffAPI {
         if (currentIndex > 0) {
           const previousPostId = data[currentIndex -1].id;
           previousButton.addEventListener("click", () => {
-            window.location.href = `/post/?id=${previousPostId}`;
+            window.location.href = `/Client-side-social-media-app/post/?id=${previousPostId}`;
           })
         } else {
           previousButton.disabled = true;
@@ -665,7 +669,7 @@ export default class NoroffApp extends NoroffAPI {
           const nextPostId = data[currentIndex +1]?.id;
           nextButton.addEventListener("click", () => {
             if(nextPostId) {
-              window.location.href = `/post/?id=${nextPostId}`;
+              window.location.href = `/Client-side-social-media-app/post/?id=${nextPostId}`;
             }
           })
         } else if (currentPage * 100 < totalCount) {
@@ -677,7 +681,7 @@ export default class NoroffApp extends NoroffAPI {
             const nextPostId = data[currentIndex +1]?.id;
             nextButton.addEventListener("click", () => {
               if(nextPostId) {
-                window.location.href = `/post/?id=${nextPostId}`;
+                window.location.href = `/Client-side-social-media-app/post/?id=${nextPostId}`;
               } else {
                 nextButton.disabled = true;
                 nextButton.style.cursor = "not-allowed";

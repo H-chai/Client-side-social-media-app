@@ -42,7 +42,7 @@ export default class NoroffAPI {
       const { accessToken: token, ...user } = data;
       NoroffAPI.token = token;
       NoroffAPI.user = user;
-      window.location.href = "/post/feed/?page=1";
+      window.location.href = "/Client-side-social-media-app/post/feed/?page=1";
       return data;
     },
 
@@ -90,7 +90,7 @@ export default class NoroffAPI {
       });
 
       const data = await NoroffAPI.util.handleResponse(response, "Could not create post");
-      window.location.href = "/post/feed/?page=1";
+      window.location.href = "/Client-side-social-media-app/post/feed/?page=1";
       return data;
     },
 
@@ -101,7 +101,7 @@ export default class NoroffAPI {
       });
       const data = await NoroffAPI.util.handleResponse(response, "Could not delete post.");
       alert("The post was deleted!");
-      window.location.href = `/profile/?name=${NoroffAPI.user}`;
+      window.location.href = `/Client-side-social-media-app/profile/?name=${NoroffAPI.user}`;
       return data;
     },
 
@@ -131,7 +131,7 @@ export default class NoroffAPI {
         body,
       });
       await NoroffAPI.util.handleResponse(response, "Could not update post");
-      window.location.href = `/post/?id=${id}`;
+      window.location.href = `/Client-side-social-media-app/post/?id=${id}`;
     },
 
     comment: async (id, { body: comment, replyToId }) => {
@@ -225,7 +225,7 @@ export default class NoroffAPI {
         body,
       })
       await NoroffAPI.util.handleResponse(response, "Could not update profile.");
-      window.location.href = `/profile/?name=${name}`;
+      window.location.href = `/Client-side-social-media-app/profile/?name=${name}`;
     },
 
     follow: async (name) => {
