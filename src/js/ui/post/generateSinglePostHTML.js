@@ -15,7 +15,7 @@ export function generateSinglePostHTML(post) {
     thumbnail.src = post.media.url;
     thumbnail.alt = post.media.alt;
   } else {
-    thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
+    thumbnail.src = "/Client-side-social-media-app/public/images/default-thumbnail.jpg";
     thumbnail.alt = "No Media Available";
   }
   const postUserDate = document.createElement('div');

@@ -14,11 +14,11 @@ export function generateFeedHTML(post) {
     thumbnail.alt = post.media.alt;
 
     thumbnail.onerror = () => {
-      thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
+      thumbnail.src = "/Client-side-social-media-app/public/images/default-thumbnail.jpg";
       thumbnail.alt = "Default Thumbnail";
     };
   } else {
-    thumbnail.src = "../../../../public/images/default-thumbnail.jpg";
+    thumbnail.src = "/Client-side-social-media-app/public/images/default-thumbnail.jpg";
     thumbnail.alt = "No Media Available";
   }
   figure.appendChild(thumbnail);
